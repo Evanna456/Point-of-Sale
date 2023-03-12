@@ -1,0 +1,320 @@
+﻿<Page x:Class="PointOfSale.PointofSalePages.PointofSalePage5Transaction"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextOptions.TextRenderingMode="Auto"        
+      Background="{DynamicResource MaterialDesignPaper}"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      xmlns:xf="clr-namespace:XamlFlair;assembly=XamlFlair.WPF"
+      xmlns:local="clr-namespace:PointOfSale.MainPages"
+      xmlns:dotNetKitControls="clr-namespace:DotNetKit.Windows.Controls;assembly=DotNetKit.Wpf.AutoCompleteComboBox"
+      xmlns:ge="clr-namespace:SourceChord.GridExtra;assembly=GridExtra.Wpf"
+      mc:Ignorable="d" 
+      MinHeight="720px" MinWidth="1280px" d:DesignHeight="720" d:DesignWidth="1280"
+      Title="MainPage1" MouseDown="PageClick" Loaded="Load">
+
+    <DockPanel>
+        <Border Background="#cccccc" DockPanel.Dock="Top" Height="35">
+            <StackPanel Name="Navbar" Orientation="Horizontal">
+                <Button x:Name="OptionMenuBtn" Click="OptionMenuBtnClick" Content="Option" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"/>
+            </StackPanel>
+        </Border>
+
+        <Border xf:Animations.Primary="{xf:Animate BasedOn={StaticResource FadeIn}, Delay=1500}" Background="#fff3e6" DockPanel.Dock="Left">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Menu Name="OptionMenu" Panel.ZIndex="99" HorizontalAlignment="Left" VerticalAlignment="Top" Visibility="Hidden" Margin="45,-13,0,0">
+                    <Menu.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel Orientation="Vertical"/>
+                        </ItemsPanelTemplate>
+                    </Menu.ItemsPanel>
+                    <Button Name="HelpMenuBtn" Click="HelpFileBtnClick" Content="Help" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal" Width="95">
+                    </Button>
+                    <Button Name="AboutBtn" Content="About" Click="AboutBtnClick" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal" Width="95">
+                    </Button>
+                    <Button Name="ExitMenuBtn" Click="ExitAppBtnClick" Content="Exit" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal" Width="95">
+                    </Button>
+                </Menu>
+                <ge:ResponsiveGrid>
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <Label Height="30" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"></Label>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <TextBlock Name="TotalAmount" Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" FontStyle="Normal" FontWeight="Bold">Transaction</TextBlock>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <materialDesign:DialogHost Name="NewTransactionDialogue">
+                            <materialDesign:DialogHost.DialogContent>
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12" Padding="20px">
+                                            <TextBlock Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">New Transaction?</TextBlock>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="1" Padding="20px">
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="5" Padding="20px">
+                                            <Button Name="OkNewTransactionConfirmationBtn" Click="OkNewTransactionConfirmationBtnClick" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Yes</Button>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="5" Padding="20px">
+                                            <Button Name="CancelNewTransactionConfirmationBtn" Click="CancelNewTransactionConfirmationBtnClick" Background ="Red" BorderBrush="Red" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Cancel</Button>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="1" Padding="20px">
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </materialDesign:DialogHost.DialogContent>
+                        </materialDesign:DialogHost>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <materialDesign:DialogHost Name="DeleteItemDialogue">
+                            <materialDesign:DialogHost.DialogContent>
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12" Padding="20px">
+                                            <TextBlock Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Do you really want to Delete this Item?</TextBlock>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="1" Padding="20px">
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="5" Padding="20px">
+                                            <Button Name="OkItemDeleteConfirmationBtn" Click="OkItemDeleteConfirmationBtnClick" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Yes</Button>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="5" Padding="20px">
+                                            <Button Name="CancelItemDeleteConfirmationBtn" Click="CancelItemDeleteConfirmationBtnClick" Background ="Red" BorderBrush="Red" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Cancel</Button>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="1" Padding="20px">
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+
+                            </materialDesign:DialogHost.DialogContent>
+                        </materialDesign:DialogHost>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <materialDesign:DialogHost Name="CheckoutDialogue">
+                            <materialDesign:DialogHost.DialogContent>
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12" Padding="20px">
+                                            <TextBlock Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Checkout</TextBlock>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="6" Padding="20px">
+                                            <Label Height="30" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Payment:</Label>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="6" Padding="20px">
+                                            <TextBox Name="Payment" Height="30" Width="100" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"/>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="1" Padding="20px">
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="5" Padding="20px">
+                                            <Button Name="OkCheckoutBtn" Click="OkCheckoutBtnClick" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">OK</Button>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="5" Padding="20px">
+                                            <Button Name="CancelCheckoutConfirmationBtn" Click="CancelCheckoutConfirmationBtnClick" Background ="Red" BorderBrush="Red" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Cancel</Button>
+                                        </Border>
+
+                                        <Border ge:ResponsiveGrid.XS="1" Padding="20px">
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+
+                            </materialDesign:DialogHost.DialogContent>
+                        </materialDesign:DialogHost>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="1">
+
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="4">
+                        <StackPanel Orientation="Horizontal">
+                            <Border Padding="10px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Image Source="/res/home.png" MouseUp="HomeNavigate" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50px" Width="auto"/>
+                                        </Border>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Label MouseUp="HomeNavigate" Cursor="Hand" Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Home</Label>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+                            <Border Padding="10px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Image Source="/res/newtransact.png" MouseUp="NewTransactionBtnClick" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50px" Width="auto"/>
+                                        </Border>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Label MouseUp="NewTransactionBtnClick" Cursor="Hand" Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">New Transaction</Label>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+                            <Border Padding="10px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Image Source="/res/settings.png" MouseUp="SettingsNavigate" Cursor="Hand" HorizontalAlignment="Center" VerticalAlignment="Top" Height="50px" Width="auto"/>
+                                        </Border>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Label MouseUp="SettingsNavigate" Cursor="Hand" Height="30" Width="auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Settings</Label>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <Label Height="30" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"></Label>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="2">
+
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="10">
+                        <StackPanel Orientation="Horizontal">
+                            <Border>
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="3">
+                                            <Label Height="30" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Search</Label>
+                                        </Border>
+                                        <Border ge:ResponsiveGrid.XS="9">
+                                            <dotNetKitControls:AutoCompleteComboBox Name="ItemBox" Height="30" Width="200" HorizontalAlignment="Left" VerticalAlignment="Top" BorderThickness="2px" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"/>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                            <Border>
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="5">
+                                            <Label Height="30" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">PCS</Label>
+                                        </Border>
+                                        <Border ge:ResponsiveGrid.XS="7">
+                                            <TextBox Name="Pcs" Height="30" Width="50" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"/>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="10px 0px 0px 0px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Button Name="AddtoCartBtn" Click="AddtoCartBtnClick" HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Add to Cart</Button>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="10px 0px 0px 0px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <Button Name="CheckoutCart" Click="CheckoutCartClick" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Background="LightGoldenrodYellow" BorderBrush="Yellow" Foreground="Black"  HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Checkout</Button>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="10px 0px 0px 0px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <TextBlock Height="30" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" FontStyle="Normal" FontWeight="Normal">Grand Total:</TextBlock>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="10px 0px 0px 0px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <TextBlock Name="GrandTotal" Height="30" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" FontStyle="Normal" FontWeight="Normal"></TextBlock>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                            <Border Padding="10px 0px 0px 0px">
+                                <Grid>
+                                    <ge:ResponsiveGrid>
+                                        <Border ge:ResponsiveGrid.XS="12">
+                                            <TextBlock Height="30" Width="auto" HorizontalAlignment="Right" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="20" FontStyle="Normal" FontWeight="Normal"> php</TextBlock>
+                                        </Border>
+                                    </ge:ResponsiveGrid>
+                                </Grid>
+                            </Border>
+
+                        </StackPanel>
+                    </Border>
+
+
+                    <Border ge:ResponsiveGrid.XS="12">
+                        <Label Height="30" Width="auto" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal"></Label>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="2">
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="8">
+                        <DataGrid Name="ShoppingCartTable" Width="auto" Height="400" HorizontalAlignment="Stretch" VerticalContentAlignment="Stretch" BorderThickness="2px" AutoGenerateColumns="False" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Hidden">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Serial No" IsReadOnly="True" Binding="{Binding Path=SerialNoClmn}" Width="auto"/>
+                                <DataGridTextColumn Header="Item Name" IsReadOnly="True" Binding="{Binding Path=ItemNameClmn}" Width="auto"/>
+                                <DataGridTextColumn Header="PCS" IsReadOnly="True" Binding="{Binding Path=PCSClmn}" Width="auto"/>
+                                <DataGridTextColumn Header="Retail Price" IsReadOnly="True" Binding="{Binding Path=RetailPriceClmn}" Width="auto"/>
+                                <DataGridTextColumn Header="Total Amount" IsReadOnly="True" Binding="{Binding Path=TotalAmountPriceClmn}" Width="auto"/>
+                                <DataGridTemplateColumn IsReadOnly="True" Width="auto">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Name="DeleteItemBtn" Click="DeleteItemBtnClick" Style="{DynamicResource MaterialDesignRaisedAccentButton}" Background="Red" BorderBrush="Red" Foreground="White"  HorizontalAlignment="Left" VerticalAlignment="Top" FontFamily="Century Gothic" FontSize="17" FontStyle="Normal" FontWeight="Normal">Delete</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </Border>
+
+                    <Border ge:ResponsiveGrid.XS="2">
+                    </Border>
+
+                </ge:ResponsiveGrid>
+            </Grid>
+        </Border>
+
+    </DockPanel>
+</Page>
