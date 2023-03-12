@@ -9,7 +9,9 @@ A Point of Sale desktop application.
 
 ## Author's Notes 
 
-The first desktop application I made years ago. I only knew Java at that time but went straight to creating a fully pledge thick-client application using C#, SQlite and WPF framework. Basically I learn C# and XAML on the go while working. As you can see the program is riddled with bad code, patterns and design.
+The first desktop application I made years ago. I only knew Java at that time but went straight to creating a fully pledge thick-client application using C#, SQlite and WPF framework. Basically I learn C# and XAML on the go while working on it and the result was an app that is riddled with bad code, patterns and design.
+
+Although I am planning to rewrite this application in the foreseeable future.
 
 ## WPF
 
